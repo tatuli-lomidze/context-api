@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import UserForm from "../components/UserForm";
 import useRequest from "../hooks/useRequest";
+import { langOptions, useLangContext } from "../Contexts/LangContext";
 
 const CreatePage = () => {
+    const {lang} = useLangContext()
+
     const { sendRequest, loading } = useRequest({ url: '/api/v1/todo', method: 'POST' })
     const navigate = useNavigate()
 
@@ -16,9 +19,9 @@ const CreatePage = () => {
 
     return (
         <div>
-            <h2>Create New Task</h2>
-            <UserForm onFormSubmit={onSubmit} />
-        </div>
+        <UserForm onFormSubmit={onSubmit}/>
+        <p>{langOptions[lang]}</p>
+    </div>
     );
 };
 

@@ -1,7 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useUsersContext } from "../Contexts/UsersContexts";
+import {  langOptions, useLangContext } from "../Contexts/LangContext";
 
 const MainPage = () => {
+ const {lang} = useLangContext()
+
 const {taskList,  dataLoading, deleteLoading, onDelete, checkedOnchange, checkedTasks} = useUsersContext()
  
     if(dataLoading || deleteLoading) return <p>loading...</p>
@@ -18,12 +21,13 @@ const {taskList,  dataLoading, deleteLoading, onDelete, checkedOnchange, checked
       {/* <Link to={`/update/${i.id}`}>Edit</Link> <br /> */}
       {/* <button onClick={() => onDelete(i.id)}>Delete</button> */}
       <br />
-      <input 
+      {/* <input 
           type="checkbox" 
           // onChange={checkedOnchange(i.id)} 
           // checked={checkedTasks[i.id] || false} 
-     />   
-             <label>Mark if Completed</label>
+     />    */}
+             {/* <label>Mark if Completed</label> */}
+             <p>{langOptions[lang]}</p>
 
       </div>
   )}

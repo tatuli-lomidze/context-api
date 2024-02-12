@@ -1,20 +1,16 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useLangContext } from "../Contexts/LangContext"
 
-const Header= () => {
-    const [theme, setTheme] = useState('black')
-    const [lang, setLang] = useState('')
-
+ const Header = () => {
+    const {lang, toggleLang} = useLangContext()
 
     return (
         <header>
-            <button onClick={() => setTheme(theme === 'black' ? 'white' : 'black')}>Theme</button>
+            <button onClick={toggleLang}> Current Language: {lang}</button>
             <Link to={'/'}>Main Page</Link>
             <Link to={'/create'}>Create Page</Link>
-
-
         </header>
     )
-}
+ }
 
-export default Header
+ export default Header
